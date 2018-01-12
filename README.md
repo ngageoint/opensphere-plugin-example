@@ -28,4 +28,4 @@ Run `yarn` to install dependencies. Afterward, you can run tests with `yarn test
 
 ## Plugin Tests
 
-This includes the same (slightly old now) Karma and Jasmine versions as the main OpenSphere project. However, you can change those to whatever you like! Just take note of how (`karma.conf.js`)[https://github.com/ngageoint/opensphere-plugin-example/blob/master/karma.conf.js] is picking up the included files in the `closureFiles` variable and then passing those to the Karma config. You will need to do something similar for configuring other test runners.
+This includes the same (slightly old now) Karma and Jasmine versions as the main OpenSphere project. However, you can change those to whatever you like! Just take note of how [`karma.conf.js`](https://github.com/ngageoint/opensphere-plugin-example/blob/master/karma.conf.js) is picking up the included files in the `closureFiles` variable and then passing those to the Karma config. You will need to do something similar for configuring other test runners.
