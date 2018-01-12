@@ -1,10 +1,10 @@
 # opensphere-plugin-example
 
-This is an example of an external plugin to (OpenSphere)[https://github.com/ngageoint/opensphere]. 
+This is an example of an external plugin to [OpenSphere](https://github.com/ngageoint/opensphere). 
 
 ## Getting Started
 
-For ease of development, we have created (opensphere-yarn-workspace)[https://github.com/ngageoint/opensphere-yarn-workspace] which assists in developing across multiple projects.
+For ease of development, we have created [opensphere-yarn-workspace](https://github.com/ngageoint/opensphere-yarn-workspace) which assists in developing across multiple projects.
 
 After you set that up, your directory structure should look like this:
 ```
