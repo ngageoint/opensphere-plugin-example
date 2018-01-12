@@ -69,6 +69,25 @@ module.exports = function(config) {
     },
 
     coverageReporter: {
+      // Enforce test coverage in the build
+      // Change this to your liking
+      check: {
+        global: {
+          statements: 100,
+          branches: 100,
+          functions: 100,
+          lines: 100,
+          excludes: []
+        },
+        each: {
+          statements: 100,
+          branches: 100,
+          functions: 100,
+          lines: 100,
+          excludes: [],
+          overrides: {}
+        }
+      },
       reporters: [{
         type: 'html',
         dir: '.build/test/coverage/html'
