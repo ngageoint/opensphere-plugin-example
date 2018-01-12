@@ -1,0 +1,5 @@
+{
+  "admin": { 
+    "testMessage": "Custom plugin message from config!"
+  }
+}
