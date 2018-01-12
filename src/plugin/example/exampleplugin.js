@@ -10,7 +10,7 @@ goog.require('os.plugin.PluginManager');
  */
 
 /**
- * Provides an interface to the OSM overpass API
+ * Provides a plugin example.
  * @extends {os.plugin.AbstractPlugin}
  * @constructor
  */
