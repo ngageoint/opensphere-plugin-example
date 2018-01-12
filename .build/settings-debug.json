@@ -1,6 +1,0 @@
-{
-  "overrides": [
-    "../opensphere/config/settings.json",
-    "config/settings.json"
-  ]
-}
