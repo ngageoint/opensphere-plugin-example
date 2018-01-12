@@ -9,9 +9,9 @@ describe('plugin.example.ExamplePlugin', function() {
   });
 
   it('should alert the user with a message', function() {
-    spyOn(alert);
-    var plugin = new plugin.example.ExamplePlugin();
-    plugin.init();
-    expect(alert).toHaveBeenCalled();
+    spyOn(window, 'alert');
+    var p = new plugin.example.ExamplePlugin();
+    p.init();
+    expect(window.alert).toHaveBeenCalled();
   });
 });

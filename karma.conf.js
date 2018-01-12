@@ -25,7 +25,6 @@ module.exports = function(config) {
       {pattern: resolver.resolveModulePath('opensphere-asm/dist/os-load.js', __dirname), watched: false, included: true, served: true},
       {pattern: resolver.resolveModulePath('crossfilter2/crossfilter.min.js', __dirname), watched: false, included: true, served: true},
       {pattern: resolver.resolveModulePath('moment/min/moment.min.js', __dirname), watched: false, included: true, served: true},
-      {pattern: resolver.resolveModulePath('strophe/strophe.js', __dirname), watched: false, included: true, served: true},
       {pattern: resolver.resolveModulePath('jquery/dist/jquery.min.js', __dirname), watched: false, included: true, served: true},
       {pattern: resolver.resolveModulePath('angular/angular.js', __dirname), watched: false, included: true, served: true},
       {pattern: resolver.resolveModulePath('angular-animate/angular-animate.js', __dirname), watched: false, included: true, served: true},
@@ -34,7 +33,6 @@ module.exports = function(config) {
       {pattern: resolver.resolveModulePath('d3/d3.min.js', __dirname), watched: false, included: true, served: true},
       {pattern: resolver.resolveModulePath('jsts/dist/jsts.min.js', __dirname), watched: false, included: true, served: true},
       {pattern: resolver.resolveModulePath('moment/min/moment.min.js', __dirname), watched: false, included: true, served: true},
-      {pattern: resolver.resolveModulePath('linq/linq.min.js', __dirname), watched: false, included: true, served: true},
       {pattern: resolver.resolveModulePath('cesium/Build/Cesium/Cesium.js', __dirname), watched: false, included: true, served: true}
     ].concat(closureFiles).concat([
       // {pattern: resolver.resolveModulePath('opensphere/test/init.js', __dirname), watched: false, included: true, served: true},
