@@ -86,7 +86,6 @@
     "opensphere-build-closure-helper": "^1.0.0",
     "opensphere-build-docs": "^1.0.0",
     "opensphere-build-resolver": "^2.1.0",
-    "replace": "^0.3.0",
     "rimraf": "^2.5.4",
     "sass-lint": "^1.9.1",
     "validate-commit-msg": "^2.8.2"
