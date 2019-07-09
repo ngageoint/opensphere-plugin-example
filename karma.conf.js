@@ -6,8 +6,7 @@ var resolver = require('opensphere-build-resolver/utils');
 module.exports = function(config) {
   var closureFiles = helper.readManifest(path.resolve('.build', 'gcc-test-manifest'))
     .filter(function(item) {
-      return item.indexOf('/src/core/debugutil.js') === -1 &&
-        item.indexOf('test/') !== 0;
+      return item.indexOf('/test/') !== 0;
     });
 
   config.set({
@@ -35,8 +34,6 @@ module.exports = function(config) {
       {pattern: resolver.resolveModulePath('moment/min/moment.min.js', __dirname), watched: false, included: true, served: true},
       {pattern: resolver.resolveModulePath('cesium/Build/Cesium/Cesium.js', __dirname), watched: false, included: true, served: true}
     ].concat(closureFiles).concat([
-      // {pattern: resolver.resolveModulePath('opensphere/test/init.js', __dirname), watched: false, included: true, served: true},
-
       // tests and mocks
       'test/**/*.mock.js',
       'test/**/*.test.js',
@@ -52,7 +49,6 @@ module.exports = function(config) {
       'src/main.js',
       '**/*.swp'
     ],
-
 
     // test results reporter to use
     // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
@@ -98,7 +94,6 @@ module.exports = function(config) {
         type: 'text-summary'
       }]
     },
-
 
     // web server port
     port: 9876,

@@ -24,7 +24,7 @@
   },
   "scripts": {
     "modernizr": "modernizr -c modernizr.config.json -u -d .build/modernizr.js",
-    "test:gcc": "os-compile $(cat .build/gcc-test-args)",
+    "test:gcc": "os-compile .build/gcc-test-args.json",
     "test:init": "npm run init && npm run modernizr && npm run compile:resolve && npm run test:gcc",
     "test:run": "karma start --single-run",
     "test": "npm run test:init && npm run test:run",
@@ -33,9 +33,9 @@
     "lint:css": "sass-lint -v -s scss -i 'scss/nolint/**/*.scss' 'scss/**/*.scss'",
     "lint:js": "eslint --cache 'src/**/*.js'",
     "lint": "npm run lint:js && npm run lint:css",
-    "compile:resolve": "os-resolve .build",
+    "compile:resolve": "os-resolve --outputDir .build",
     "compile:css": "node-sass $(cat .build/node-sass-args) > .build/test.min.css",
-    "compile:gcc": "os-compile $(cat .build/gcc-java-args)",
+    "compile:gcc": "os-compile .build/gcc-args.json",
     "compile": "npm run compile:resolve && npm run compile:gcc && npm run compile:css",
     "build": "echo 'Please run the build script in the opensphere project' && exit 1",
     "package:update": "if git diff --name-only ORIG_HEAD HEAD | grep --quiet package.json; then echo 'UPDATE: package.json updated, consider running yarn in the workspace root'; fi"
@@ -79,9 +79,9 @@
     "mkdirp": "^0.5.1",
     "modernizr": "~3.3.1",
     "node-sass": "^4.12.0",
-    "opensphere-build-closure-helper": "^1.0.0",
+    "opensphere-build-closure-helper": "^3.0.0",
     "opensphere-build-docs": "^1.0.0",
-    "opensphere-build-resolver": "^2.1.0",
+    "opensphere-build-resolver": "^5.2.0",
     "rimraf": "^2.5.4",
     "sass-lint": "^1.12.1",
     "validate-commit-msg": "^2.8.2"
