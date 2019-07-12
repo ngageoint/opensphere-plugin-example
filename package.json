@@ -87,7 +87,7 @@
     "validate-commit-msg": "^2.8.2"
   },
   "dependencies": {
-    "opensphere": "^1.0.0"
+    "opensphere": "0.0.0-development"
   },
   "husky": {
     "hooks": {
