@@ -1,14 +1,20 @@
-// Karma configuration
+/* eslint-env es6 */
+/* eslint-disable max-len */
+
 const path = require('path');
-const helper = require('opensphere-build-closure-helper');
-var resolver = require('opensphere-build-resolver/utils');
+const resolved = require(path.join(__dirname, '.build/resolved.json'));
+const resolver = require('opensphere-build-resolver/utils');
 
+/**
+ * Karma configuration.
+ *
+ * Development Note:
+ * This configuration uses a script loader to avoid pending request limits in Chrome. To limit which tests run during
+ * development, use `ddescribe` and `iit` to instruct Jasmine to only run those specs.
+ *
+ * @param {Object} config The config.
+ */
 module.exports = function(config) {
-  var closureFiles = helper.readManifest(path.resolve('.build', 'gcc-test-manifest'))
-    .filter(function(item) {
-      return item.indexOf('/test/') !== 0;
-    });
-
   config.set({
     // base path, that will be used to resolve files and exclude
     basePath: '',
@@ -31,18 +37,24 @@ module.exports = function(config) {
       {pattern: resolver.resolveModulePath('angular-mocks/angular-mocks.js', __dirname), watched: false, included: true, served: true},
       {pattern: resolver.resolveModulePath('d3/d3.min.js', __dirname), watched: false, included: true, served: true},
       {pattern: resolver.resolveModulePath('jsts/dist/jsts.min.js', __dirname), watched: false, included: true, served: true},
-      {pattern: resolver.resolveModulePath('moment/min/moment.min.js', __dirname), watched: false, included: true, served: true},
-      {pattern: resolver.resolveModulePath('cesium/Build/Cesium/Cesium.js', __dirname), watched: false, included: true, served: true}
-    ].concat(closureFiles).concat([
-      // tests and mocks
-      'test/**/*.mock.js',
-      'test/**/*.test.js',
 
-      // test resources
-      {pattern: 'test/**/*.json', included: false},
-      {pattern: 'test/**/*.xml', included: false},
-      {pattern: 'test/resources/**/*', included: false}
-    ]),
+      // source files for the script loader
+      {pattern: 'src/**/*.js', watched: false, included: false, served: true},
+      {pattern: 'test/**/*.js', watched: false, included: false, served: true},
+      {pattern: path.join(resolved['opensphere'], '**/*.js'), watched: false, included: false, served: true},
+      {pattern: path.join(resolved['bits-internal'], '**/*.js'), watched: false, included: false, served: true},
+      {pattern: resolver.resolveModulePath('google-closure-library/**/*.js', __dirname), watched: false, included: false, served: true},
+      {pattern: resolver.resolveModulePath('openlayers/**/*.js', __dirname), watched: false, included: false, served: true},
+
+      // serve the test manifest and include the script loader
+      {pattern: '.build/gcc-test-manifest', watched: false, included: false, served: true},
+      resolver.resolveModulePath('opensphere-build-index/karma-test-loader.js', __dirname)
+    ],
+
+    proxies: {
+      // the test loader uses this path to resolve the manifest
+      '/karma-test-scripts': path.resolve(__dirname, '.build', 'gcc-test-manifest')
+    },
 
     // list of files to exclude
     exclude: [
@@ -54,8 +66,16 @@ module.exports = function(config) {
     // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
     reporters: ['dots', 'junit', 'coverage'],
 
+    //
+    // Preprocessors:
+    //  - googmodule wraps goog.module files so they are loaded correctly by the browser
+    //  - coverage provides test coverage reports
+    //
     preprocessors: {
-      'src/**/*.js': ['coverage']
+      'src/**/*.js': ['googmodule', 'coverage'],
+      'test/**/*.mock.js': ['googmodule'],
+      // support goog.module in all other js files in the workspace
+      '../**/*.js': ['googmodule']
     },
 
     junitReporter: {
@@ -128,7 +148,7 @@ module.exports = function(config) {
     // if true, it capture browsers, run tests and exit
     singleRun: false,
 
-    //Write console output to terminal window
+    // Write console output to terminal window
     client: {
       captureConsole: true
     }
