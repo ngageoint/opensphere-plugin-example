@@ -42,7 +42,6 @@ module.exports = function(config) {
       {pattern: 'src/**/*.js', watched: false, included: false, served: true},
       {pattern: 'test/**/*.js', watched: false, included: false, served: true},
       {pattern: path.join(resolved['opensphere'], '**/*.js'), watched: false, included: false, served: true},
-      {pattern: path.join(resolved['bits-internal'], '**/*.js'), watched: false, included: false, served: true},
       {pattern: resolver.resolveModulePath('google-closure-library/**/*.js', __dirname), watched: false, included: false, served: true},
       {pattern: resolver.resolveModulePath('openlayers/**/*.js', __dirname), watched: false, included: false, served: true},
 
