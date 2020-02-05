@@ -137,7 +137,6 @@ module.exports = function(config) {
     // - Firefox
     // - Opera (has to be installed with `npm install karma-opera-launcher`)
     // - Safari (only Mac; has to be installed with `npm install karma-safari-launcher`)
-    // - PhantomJS
     // - IE (only Windows; has to be installed with `npm install karma-ie-launcher`)
     browsers: ['ChromeHeadless', 'FirefoxHeadless'],
 
