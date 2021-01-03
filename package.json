@@ -16,6 +16,7 @@
     "config": [
       "config/settings.json"
     ],
+    "index": "index.js",
     "gcc": {
       "entry_point": [
         "goog:plugin.example.ExamplePlugin"
