@@ -1,7 +1,8 @@
-goog.provide('plugin.example.ExamplePlugin');
+goog.module('plugin.example.ExamplePlugin');
 
-goog.require('os.plugin.AbstractPlugin');
-goog.require('os.plugin.PluginManager');
+const AbstractPlugin = goog.require('os.plugin.AbstractPlugin');
+const pm = goog.require('os.plugin.PluginManager');
+const {ID} = goog.require('plugin.example');
 
 
 /* =========== NOTE ==========
@@ -11,33 +12,32 @@ goog.require('os.plugin.PluginManager');
 
 /**
  * Provides a plugin example.
- * @extends {os.plugin.AbstractPlugin}
- * @constructor
  */
-plugin.example.ExamplePlugin = function() {
-  plugin.example.ExamplePlugin.base(this, 'constructor');
-  this.id = plugin.example.ID;
-  this.errorMessage = null;
-};
-goog.inherits(plugin.example.ExamplePlugin, os.plugin.AbstractPlugin);
+class ExamplePlugin extends AbstractPlugin {
+  /**
+   * Constructor.
+   */
+  constructor() {
+    super();
+    this.id = ID;
+    this.errorMessage = null;
+  }
 
-/**
- * @type {string}
- * @const
+  /**
+  * @inheritDoc
  */
-plugin.example.ID = 'example';
-
-/**
- * @inheritDoc
- */
-plugin.example.ExamplePlugin.prototype.init = function() {
+  init() {
   // here's where all the setup is done
 
   // in this initial example, we just grab our test message from config
   var msg = os.settings.get('testMessage', 'Default message from plugin.');
 
   alert(msg);
+  }
 };
 
+
 // add the plugin to the application
-os.plugin.PluginManager.getInstance().addPlugin(new plugin.example.ExamplePlugin());
+pm.getInstance().addPlugin(new ExamplePlugin());
+
+exports = ExamplePlugin;
