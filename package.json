@@ -26,7 +26,7 @@
   "scripts": {
     "modernizr": "modernizr -c modernizr.config.json -u -d .build/modernizr.js",
     "test:gcc": "os-compile .build/gcc-test-args.json",
-    "test:init": "npm run init && npm run modernizr && npm run compile:resolve && npm run test:gcc",
+    "test:init": "npm run init && npm run modernizr && npm run compile:resolve -- --exclude resources scss && npm run test:gcc",
     "test:run": "karma start --single-run",
     "test": "npm run test:init && npm run test:run",
     "test:debug": "karma start --browsers Chrome --reporters dots",
