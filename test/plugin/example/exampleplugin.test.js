@@ -4,7 +4,8 @@ goog.require('os.mock');
 goog.require('plugin.example.ExamplePlugin');
 
 describe('plugin.example.ExamplePlugin', function() {
-  const ExamplePlugin = goog.module.get('plugin.example.ExamplePlugin');
+  const {default: ExamplePlugin} = goog.module.get('plugin.example.ExamplePlugin');
+
   it('should have the proper ID', function() {
     expect(new ExamplePlugin().id).toBe('example');
   });

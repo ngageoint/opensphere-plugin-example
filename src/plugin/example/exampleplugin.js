@@ -1,20 +1,19 @@
-goog.module('plugin.example.ExamplePlugin');
+goog.declareModuleId('plugin.example.ExamplePlugin');
 
-const Settings = goog.require('os.config.Settings');
-const AbstractPlugin = goog.require('os.plugin.AbstractPlugin');
-const PluginManager = goog.require('os.plugin.PluginManager');
-const {ID} = goog.require('plugin.example');
+import Settings from 'opensphere/src/os/config/settings.js';
+import AbstractPlugin from 'opensphere/src/os/plugin/abstractplugin.js';
+import PluginManager from 'opensphere/src/os/plugin/pluginmanager.js';
 
+import {ID} from './example.js';
 
 /* =========== NOTE ==========
  * If you change the package name of this particular class, be sure to modify
  * build.gcc.entry_point to match the new package/class name.
  */
-
 /**
  * Provides a plugin example.
  */
-class ExamplePlugin extends AbstractPlugin {
+export default class ExamplePlugin extends AbstractPlugin {
   /**
    * Constructor.
    */
@@ -37,8 +36,5 @@ class ExamplePlugin extends AbstractPlugin {
   }
 }
 
-
 // add the plugin to the application
 PluginManager.getInstance().addPlugin(new ExamplePlugin());
-
-exports = ExamplePlugin;

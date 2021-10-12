@@ -1,12 +1,7 @@
-goog.module('plugin.example');
-
+goog.declareModuleId('plugin.example');
 
 /**
  * Plugin identifier.
  * @type {string}
  */
-const ID = 'example';
-
-exports = {
-  ID
-};
+export const ID = 'example';
